@@ -11,8 +11,9 @@ namespace LoginDemo
             Init();
         }
 
-        void Init()
+         void Init()
         {
+         
             BackgroundColor = Constants.BackgroundColor;
             Lbl_Username.TextColor = Constants.MainTextColor;
             Lbl_Password.TextColor = Constants.MainTextColor;
@@ -23,6 +24,9 @@ namespace LoginDemo
 
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
             Entry_Password.Completed += (s, e) => SignInProcedure(s, e);
+
+		
+
         }
         void SignInProcedure(object sender, System.EventArgs e)
         {
@@ -31,6 +35,7 @@ namespace LoginDemo
             if(user.CheckInformation())
             {
                 DisplayAlert("LoginDemo", "Login success", "Ok");
+                App.UserDatabase.SaveUser((user));
             }
             else
             {
