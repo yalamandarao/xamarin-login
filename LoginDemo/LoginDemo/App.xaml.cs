@@ -7,6 +7,7 @@ namespace LoginDemo
     {
         static TokenDatabaseController tokenDatabase;
         static UserDatabaseController userDatabase;
+        static RestService restService;
 
         public App()
         {
@@ -53,5 +54,17 @@ namespace LoginDemo
 				return tokenDatabase;
 			}
 		}
+
+        public static RestService RestService
+        {
+            get
+            {
+                if (restService == null)
+                {
+                    restService = new RestService();
+                }
+                return restService;
+            }
+        }
     }
 }

@@ -10,6 +10,11 @@ namespace LoginDemo.Models
         public static Color ButtonColor = Color.Red;
 
         public static int ImageIconHeight = 120;
+
+
+        // ------ Login -------
+        public static string LoginUrl = "https://test.com/api/Auth/Login";
+
         public Constants()
         {
            

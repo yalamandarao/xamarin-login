@@ -28,14 +28,19 @@ namespace LoginDemo
 		
 
         }
-        void SignInProcedure(object sender, System.EventArgs e)
+        async void SignInProcedure(object sender, System.EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text);
 
             if(user.CheckInformation())
             {
                 DisplayAlert("LoginDemo", "Login success", "Ok");
-                App.UserDatabase.SaveUser((user));
+                var result = await App.RestService.Login(user);
+                if(result.access_token != null)
+                {
+                    App.UserDatabase.SaveUser(user);
+                }
+
             }
             else
             {
